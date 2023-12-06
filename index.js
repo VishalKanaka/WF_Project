@@ -95,7 +95,7 @@ app.post('/api/movies/insert', async (req, res) => {
 
     await newMovie.save();
 
-        res.redirect('/api/Allsales'); 
+        res.send('success'); 
     } catch (err) {
         console.error(err); 
         res.status(500).send('Error adding a new invoice');
@@ -130,6 +130,7 @@ app.post('/api/movies/insert', async (req, res) => {
       .sort({ _id: 1 })
       .then(movies => {
         res.json(movies);
+        res.send(movies);
       })
       .catch(error => {
         handleErrors(res, 500, 'Internal Server Error');
